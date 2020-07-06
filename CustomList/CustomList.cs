@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,31 +6,28 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class CustomList<T> : IEnumerable
+    public class MyList<T>
     {
-        public T[] items;
-        public CustomList()
+        int count;
+        public int Count { get; set; }
+        int capacity;
+        public int Capacity { get; set; }
+        private T[] items;
+        public MyList()
         {
-            items = new T[0];
+            capacity = 4;
+            items = new T[capacity];
         }
 
-        public IEnumerator GetEnumerator()
+        public void Add()
         {
-            throw new NotImplementedException();
-        }
-
-        public class MyList<T>
-        {
-
-            public readonly int Count;
-          
-            public int Capacity { get; set; }
-           
-            
-            public void Add()
+            T[] TempList = new T[items.Length + 1];
+            for(int i = 0; i < items.Length; i++)
             {
-
+                TempList[i] = items[i];
             }
+            items = TempList;
+
         }
     }
 }
